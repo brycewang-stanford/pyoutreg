@@ -8,23 +8,23 @@
 
 A Python implementation of Stata's popular `outreg2` command for exporting regression results to Excel and Word formats with publication-quality formatting.
 
-## 🎯 Features
+##  Features
 
-- **📊 Regression Export**: Export results from `statsmodels` and `linearmodels` to Excel (.xlsx) and Word (.docx)
-- **🔬 Model Support**: OLS, Fixed Effects, Random Effects, Logit, Probit, IV, Panel Data
-- **📋 Professional Formatting**: Publication-ready tables with significance stars, standard errors
-- **📈 Model Comparison**: Side-by-side comparison of multiple models in single tables
-- **🎨 Customization**: Extensive options for decimal places, variable selection, titles, notes
-- **📊 Summary Statistics**: Descriptive statistics and cross-tabulation export
-- **🔗 Integration**: Part of the **pystatar** ecosystem for Stata-like functionality in Python
+- **Regression Export**: Export results from `statsmodels` and `linearmodels` to Excel (.xlsx) and Word (.docx)
+- **Model Support**: OLS, Fixed Effects, Random Effects, Logit, Probit, IV, Panel Data
+- **Professional Formatting**: Publication-ready tables with significance stars, standard errors
+- **Model Comparison**: Side-by-side comparison of multiple models in single tables
+- **Customization**: Extensive options for decimal places, variable selection, titles, notes
+- **Summary Statistics**: Descriptive statistics and cross-tabulation export
+- **Integration**: Part of the **pystatar** ecosystem for Stata-like functionality in Python
 
-## 🚀 Installation
+##  Installation
 
 ```bash
 pip install pyoutreg
 ```
 
-## 🌐 Related Packages
+##  Related Packages
 
 PyOutreg is part of a growing ecosystem of Python packages that bring Stata-like functionality to Python:
 
@@ -41,7 +41,7 @@ For users interested in AI-powered econometric analysis, **StasPAI** offers a re
 
 PyOutreg will be integrated into the **PyStataR** package to provide a comprehensive Stata-like experience in Python.
 
-## 📖 Quick Start
+##  Quick Start
 
 ### Basic Regression Export
 
@@ -230,7 +230,7 @@ outreg(result, 'customized_output.xlsx',
 
 ```
 
-## 🎛️ API Reference
+## API Reference
 
 ### Main Functions
 
@@ -279,7 +279,7 @@ Export cross-tabulation table.
 - `col_var`: Column variable name
 - `filename`: Output filename or None for preview
 
-## 🎨 Output Examples
+## Output Examples
 
 ### Regression Table Output
 ```
@@ -298,6 +298,7 @@ Export cross-tabulation table.
                   F-statistic      152.34      189.45      167.23
 *** p<0.01, ** p<0.05, * p<0.1
 ```
+![alt text](image-1.png)
 
 ### Summary Statistics Output
 ```
@@ -308,7 +309,7 @@ experience   1,000      12.3         8.9        0        40
 age          1,000      35.2        10.1       18        65
 ```
 
-## 🔗 Integration with PyStataR
+## Integration with PyStataR
 
 PyOutreg is designed to be integrated into the **PyStataR** package, which aims to provide comprehensive Stata-like functionality in Python:
 
@@ -331,7 +332,7 @@ ps.tabulate('gender region', data)
 - **StasPAI**: AI-powered econometric analysis with machine learning integration
 - **PyOutreg**: Regression table export (this package)
 
-## 📚 Documentation
+## Documentation
 
 For comprehensive documentation and more examples:
 

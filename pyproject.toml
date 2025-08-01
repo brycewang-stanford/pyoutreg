@@ -1,0 +1,142 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyoutreg"
+version = "0.1.0"
+description = "A Python implementation of Stata's outreg2 for exporting regression results"
+readme = "README.md"
+requires-python = ">=3.7"
+license = "MIT"
+authors = [
+    {name = "Bryce Wang", email = "brycew6m@stanford.edu"}
+]
+maintainers = [
+    {name = "Bryce Wang", email = "brycew6m@stanford.edu"}
+]
+keywords = [
+    "regression", "statistics", "stata", "econometrics", 
+    "export", "excel", "word", "tables", "outreg"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Office/Business :: Office Suites",
+]
+dependencies = [
+    "pandas>=1.3.0",
+    "numpy>=1.20.0",
+    "statsmodels>=0.12.0",
+    "linearmodels>=4.25",
+    "openpyxl>=3.0.0",
+    "python-docx>=0.8.11",
+    "scipy>=1.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+    "black>=21.0",
+    "flake8>=3.8",
+    "mypy>=0.800",
+]
+test = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+]
+docs = [
+    "sphinx>=4.0",
+    "sphinx-rtd-theme>=1.0",
+    "nbsphinx>=0.8",
+]
+
+[project.urls]
+Homepage = "https://github.com/brycewang-stanford/pyoutreg"
+Repository = "https://github.com/brycewang-stanford/pyoutreg"
+Documentation = "https://github.com/brycewang-stanford/pyoutreg/blob/main/README.md"
+Changelog = "https://github.com/brycewang-stanford/pyoutreg/blob/main/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/brycewang-stanford/pyoutreg/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pyoutreg*"]
+exclude = ["pyoutreg_env*", "tests*", "docs*"]
+
+[tool.setuptools.package-data]
+pyoutreg = ["py.typed"]
+
+[tool.black]
+line-length = 88
+target-version = ['py37', 'py38', 'py39', 'py310', 'py311', 'py312', 'py313']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+
+[tool.mypy]
+python_version = "3.7"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.coverage.run]
+source = ["pyoutreg"]
+omit = [
+    "tests/*",
+    "*/tests/*",
+    "setup.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
