@@ -16,8 +16,8 @@ A Python implementation of Stata's popular `outreg2` command for exporting regre
 - **Model Comparison**: Side-by-side comparison of multiple models in single tables
 - **Customization**: Extensive options for decimal places, variable selection, titles, notes
 - **Summary Statistics**: Descriptive statistics and cross-tabulation export
-- **Ecosystem Integration**: Part of the **PyStataR** ecosystem for comprehensive Stata-like functionality in Python
-- **Future-Ready**: Designed for seamless integration with **pdtab**, **StasPAI**, and other statistical tools
+- **Ecosystem Integration**: Part of the **statar** ecosystem for comprehensive Stata and R-like functionality in Python
+- **Future-Ready**: Designed for seamless integration with **pdtab**, **pywinsor2**, **pyegen**, and other statistical tools
 
 ##  Installation
 
@@ -29,47 +29,51 @@ pip install pyoutreg
 
 PyOutreg is part of a growing ecosystem of Python packages that bring Stata-like functionality to Python:
 
-### [PyStataR](https://github.com/brycewang-stanford/PyStataR)
-The **PyOutreg** library will be integrated into **PyStataR**, a comprehensive Python package that bridges Stata and R functionality in Python. PyStataR aims to provide Stata users with familiar commands and workflows while leveraging Python's powerful data science ecosystem.
+### [statar](https://github.com/brycewang-stanford/statar)
+The **PyOutreg** library will be integrated into **statar**, a comprehensive Python package that provides Stata and R-like functionality in Python. statar aims to provide Stata users with familiar commands and workflows while leveraging Python's powerful data science ecosystem.
 
 ### [StasPAI](https://github.com/brycewang-stanford/StasPAI)
-For users interested in AI-powered econometric analysis, **StasPAI** offers a related project focused on integrating statistical analysis with artificial intelligence methods. StasPAI provides advanced econometric modeling capabilities enhanced by machine learning approaches.
+For users interested in AI-powered analysis, **StasPAI** offers a related project focused on integrating statistics, econometrics, machine learning, and LLMs/AI methods. StasPAI provides advanced analytical capabilities that combine traditional statistical methods with modern AI approaches.
 
 ##  Integration with Broader Ecosystem
 
-**PyOutreg** is part of a comprehensive econometric and statistical analysis ecosystem:
+**PyOutreg** is part of a comprehensive statistical analysis ecosystem:
 
-### [PyStataR](https://github.com/brycewang-stanford/PyStataR)
-The **PyOutreg** library will be integrated into **PyStataR**, a comprehensive Python package that bridges Stata and R functionality in Python. PyStataR aims to provide Stata users with familiar commands and workflows while leveraging Python's powerful data science ecosystem.
+### [statar](https://github.com/brycewang-stanford/statar)
+The **PyOutreg** library will be integrated into **statar**, a comprehensive Python package that provides Stata-like functionality in Python. statar aims to provide Stata users with familiar commands and workflows while leveraging Python's powerful data science ecosystem.
 
 **Key Integration Features:**
-- **Unified Command Interface**: PyOutreg's `outreg()` function will be accessible as `ps.outreg()` within PyStataR
-- **Seamless Workflow**: Direct integration with PyStataR's regression commands and data manipulation functions
+- **Unified Command Interface**: PyOutreg's `outreg()` function will be accessible as `st.outreg()` within statar
+- **Seamless Workflow**: Direct integration with statar's regression commands and data manipulation functions
 - **Consistent Syntax**: Stata-like command structure for familiar user experience
 - **Enhanced Functionality**: Combined with other statistical tools for comprehensive analysis
 
 ### [StasPAI](https://github.com/brycewang-stanford/StasPAI)
-For users interested in AI-powered econometric analysis, **StasPAI** offers a related project focused on integrating statistical analysis with artificial intelligence methods. StasPAI provides advanced econometric modeling capabilities enhanced by machine learning approaches.
+**StasPAI** is a related but independent project that focuses on integrating statistics, econometrics, machine learning, and LLMs/AI methods. It provides advanced analytical capabilities combining traditional statistical methods with modern AI approaches.
 
 **Ecosystem Components:**
-- **[PyStataR](https://github.com/brycewang-stanford/PyStataR)** - Main package integrating PyOutreg and other Stata-like tools
+- **[statar](https://github.com/brycewang-stanford/statar)** - Main package integrating PyOutreg and other Stata-like tools
 - **[pdtab](https://github.com/brycewang-stanford/pdtab)** - Pandas-based tabulation library for cross-tabulation and summary statistics
-- **[StasPAI](https://github.com/brycewang-stanford/StasPAI)** - AI-powered econometric analysis and machine learning integration
+- **[pywinsor2](https://github.com/brycewang-stanford/pywinsor2)** - Winsorization and outlier treatment utilities
+- **[pyegen](https://github.com/brycewang-stanford/pyegen)** - Data generation and variable creation tools
 - **PyOutreg** - Regression table export functionality (this package)
+- **[StasPAI](https://github.com/brycewang-stanford/StasPAI)** - AI-powered statistical analysis (related package)
 
 ### Future Integration Examples
 ```python
-# Future PyStataR integration
-import PyStataR as ps
+# Future statar integration
+import statar as st
 
 # Regression analysis with immediate export
-ps.regress('wage education experience age', data)
-ps.outreg('regression_results.xlsx', title="Wage Analysis")
+st.regress('wage education experience age', data)
+st.outreg('regression_results.xlsx', title="Wage Analysis")
 
-# Combined workflow
-ps.summarize(data)
-ps.tabulate('gender region', data) 
-ps.outreg_compare([model1, model2], 'comparison.xlsx')
+# Combined workflow with integrated tools
+st.summarize(data)
+st.tabulate('gender region', data)  # pdtab integration
+st.winsor2('wage', data, p=[0.01, 0.99])  # pywinsor2 integration
+st.egen('wage_group = cut(wage)', data)   # pyegen integration
+st.outreg_compare([model1, model2], 'comparison.xlsx')
 ```
 
 ##  Quick Start
@@ -340,34 +344,36 @@ experience   1,000      12.3         8.9        0        40
 age          1,000      35.2        10.1       18        65
 ```
 
-## Integration with PyStataR
+## Integration with statar
 
-PyOutreg is designed to be integrated into the **PyStataR** package, which aims to provide comprehensive Stata-like functionality in Python. As part of the broader econometric ecosystem, PyOutreg will work seamlessly with other statistical tools:
+PyOutreg is designed to be integrated into the **statar** package, which aims to provide comprehensive Stata-like functionality in Python. As part of the broader statistical ecosystem, PyOutreg will work seamlessly with other Stata-like tools:
 
 ```python
 # Future integration (planned)
-import PyStataR as ps
+import statar as st
 
 # Direct regression analysis and export
-ps.regress('wage education experience age', data)
-ps.outreg('wage_analysis.xlsx', title="Wage Regression Results")
+st.regress('wage education experience age', data)
+st.outreg('wage_analysis.xlsx', title="Wage Regression Results")
 
 # Summary statistics and cross-tabulation
-ps.summarize(data, by='gender')
-ps.tabulate('education region', data)
+st.summarize(data, by='gender')
+st.tabulate('education region', data)
 
 # Advanced model comparison workflow
-model1 = ps.regress('wage education', data)
-model2 = ps.regress('wage education experience', data) 
-model3 = ps.regress('wage education experience age', data)
+model1 = st.regress('wage education', data)
+model2 = st.regress('wage education experience', data) 
+model3 = st.regress('wage education experience age', data)
 
-ps.outreg_compare([model1, model2, model3], 
+st.outreg_compare([model1, model2, model3], 
                  'progressive_models.xlsx',
                  model_names=['Basic', 'Add Experience', 'Full Model'])
 
 # Integration with other ecosystem tools
-ps.pdtab.crosstab(data, 'gender', 'region')  # pdtab integration
-ps.summary_stats(data, detail=True)          # PyOutreg functionality
+st.pdtab.crosstab(data, 'gender', 'region')  # pdtab integration
+st.winsor2('wage', data, p=[0.01, 0.99])     # pywinsor2 integration
+st.egen('wage_decile = xtile(wage)', data)   # pyegen integration
+st.summary_stats(data, detail=True)          # PyOutreg functionality
 ```
 
 **Integrated Ecosystem Benefits:**
@@ -377,10 +383,14 @@ ps.summary_stats(data, detail=True)          # PyOutreg functionality
 - **Enhanced Performance**: Optimized integration between components
 
 **Related Projects in the Ecosystem:**
-- **[PyStataR](https://github.com/brycewang-stanford/PyStataR)**: Main integration package providing Stata-like functionality
+- **[statar](https://github.com/brycewang-stanford/statar)**: Main integration package providing Stata-like functionality
 - **[pdtab](https://github.com/brycewang-stanford/pdtab)**: Pandas-based tabulation library for statistical summaries
-- **[StasPAI](https://github.com/brycewang-stanford/StasPAI)**: AI-powered econometric analysis with machine learning integration
+- **[pywinsor2](https://github.com/brycewang-stanford/pywinsor2)**: Winsorization and outlier treatment utilities
+- **[pyegen](https://github.com/brycewang-stanford/pyegen)**: Data generation and variable creation tools
 - **PyOutreg**: Regression table export (this package)
+
+**Related but Independent:**
+- **[StasPAI](https://github.com/brycewang-stanford/StasPAI)**: AI-powered statistical analysis combining traditional methods with machine learning and LLMs
 
 ## Documentation
 
