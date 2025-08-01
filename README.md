@@ -16,7 +16,8 @@ A Python implementation of Stata's popular `outreg2` command for exporting regre
 - **Model Comparison**: Side-by-side comparison of multiple models in single tables
 - **Customization**: Extensive options for decimal places, variable selection, titles, notes
 - **Summary Statistics**: Descriptive statistics and cross-tabulation export
-- **Integration**: Part of the **pystatar** ecosystem for Stata-like functionality in Python
+- **Ecosystem Integration**: Part of the **PyStataR** ecosystem for comprehensive Stata-like functionality in Python
+- **Future-Ready**: Designed for seamless integration with **pdtab**, **StasPAI**, and other statistical tools
 
 ##  Installation
 
@@ -34,12 +35,42 @@ The **PyOutreg** library will be integrated into **PyStataR**, a comprehensive P
 ### [StasPAI](https://github.com/brycewang-stanford/StasPAI)
 For users interested in AI-powered econometric analysis, **StasPAI** offers a related project focused on integrating statistical analysis with artificial intelligence methods. StasPAI provides advanced econometric modeling capabilities enhanced by machine learning approaches.
 
-**Package Ecosystem:**
-- **[PyStataR](https://github.com/brycewang-stanford/PyStataR)** - Main package that integrates PyOutreg and other Stata-like tools
+##  Integration with Broader Ecosystem
+
+**PyOutreg** is part of a comprehensive econometric and statistical analysis ecosystem:
+
+### [PyStataR](https://github.com/brycewang-stanford/PyStataR)
+The **PyOutreg** library will be integrated into **PyStataR**, a comprehensive Python package that bridges Stata and R functionality in Python. PyStataR aims to provide Stata users with familiar commands and workflows while leveraging Python's powerful data science ecosystem.
+
+**Key Integration Features:**
+- **Unified Command Interface**: PyOutreg's `outreg()` function will be accessible as `ps.outreg()` within PyStataR
+- **Seamless Workflow**: Direct integration with PyStataR's regression commands and data manipulation functions
+- **Consistent Syntax**: Stata-like command structure for familiar user experience
+- **Enhanced Functionality**: Combined with other statistical tools for comprehensive analysis
+
+### [StasPAI](https://github.com/brycewang-stanford/StasPAI)
+For users interested in AI-powered econometric analysis, **StasPAI** offers a related project focused on integrating statistical analysis with artificial intelligence methods. StasPAI provides advanced econometric modeling capabilities enhanced by machine learning approaches.
+
+**Ecosystem Components:**
+- **[PyStataR](https://github.com/brycewang-stanford/PyStataR)** - Main package integrating PyOutreg and other Stata-like tools
+- **[pdtab](https://github.com/brycewang-stanford/pdtab)** - Pandas-based tabulation library for cross-tabulation and summary statistics
 - **[StasPAI](https://github.com/brycewang-stanford/StasPAI)** - AI-powered econometric analysis and machine learning integration
 - **PyOutreg** - Regression table export functionality (this package)
 
-PyOutreg will be integrated into the **PyStataR** package to provide a comprehensive Stata-like experience in Python.
+### Future Integration Examples
+```python
+# Future PyStataR integration
+import PyStataR as ps
+
+# Regression analysis with immediate export
+ps.regress('wage education experience age', data)
+ps.outreg('regression_results.xlsx', title="Wage Analysis")
+
+# Combined workflow
+ps.summarize(data)
+ps.tabulate('gender region', data) 
+ps.outreg_compare([model1, model2], 'comparison.xlsx')
+```
 
 ##  Quick Start
 
@@ -311,25 +342,44 @@ age          1,000      35.2        10.1       18        65
 
 ## Integration with PyStataR
 
-PyOutreg is designed to be integrated into the **PyStataR** package, which aims to provide comprehensive Stata-like functionality in Python:
+PyOutreg is designed to be integrated into the **PyStataR** package, which aims to provide comprehensive Stata-like functionality in Python. As part of the broader econometric ecosystem, PyOutreg will work seamlessly with other statistical tools:
 
 ```python
 # Future integration (planned)
 import PyStataR as ps
 
-# Will include PyOutreg functionality
-ps.outreg(model, 'results.xlsx')
-ps.summary_stats(data, 'stats.xlsx')
-
-# Along with other Stata-like commands
+# Direct regression analysis and export
 ps.regress('wage education experience age', data)
-ps.summarize(data)
-ps.tabulate('gender region', data)
+ps.outreg('wage_analysis.xlsx', title="Wage Regression Results")
+
+# Summary statistics and cross-tabulation
+ps.summarize(data, by='gender')
+ps.tabulate('education region', data)
+
+# Advanced model comparison workflow
+model1 = ps.regress('wage education', data)
+model2 = ps.regress('wage education experience', data) 
+model3 = ps.regress('wage education experience age', data)
+
+ps.outreg_compare([model1, model2, model3], 
+                 'progressive_models.xlsx',
+                 model_names=['Basic', 'Add Experience', 'Full Model'])
+
+# Integration with other ecosystem tools
+ps.pdtab.crosstab(data, 'gender', 'region')  # pdtab integration
+ps.summary_stats(data, detail=True)          # PyOutreg functionality
 ```
 
-**Related Projects:**
-- **PyStataR**: Main integration package providing Stata-like functionality
-- **StasPAI**: AI-powered econometric analysis with machine learning integration
+**Integrated Ecosystem Benefits:**
+- **Unified Interface**: Single import for all Stata-like functionality
+- **Seamless Workflow**: No need to switch between different packages
+- **Consistent Documentation**: Integrated help system and examples
+- **Enhanced Performance**: Optimized integration between components
+
+**Related Projects in the Ecosystem:**
+- **[PyStataR](https://github.com/brycewang-stanford/PyStataR)**: Main integration package providing Stata-like functionality
+- **[pdtab](https://github.com/brycewang-stanford/pdtab)**: Pandas-based tabulation library for statistical summaries
+- **[StasPAI](https://github.com/brycewang-stanford/StasPAI)**: AI-powered econometric analysis with machine learning integration
 - **PyOutreg**: Regression table export (this package)
 
 ## Documentation
@@ -348,3 +398,23 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 ## 📄 License
 
 MIT License
+
+Copyright (c) 2025 Bryce Wang
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
