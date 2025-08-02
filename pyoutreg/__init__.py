@@ -8,7 +8,7 @@ publication-quality formatting.
 
 from .outreg import outreg, summary_stats, cross_tab, outreg_compare
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Bryce Wang"
 __email__ = "brycewang@example.com"
 
