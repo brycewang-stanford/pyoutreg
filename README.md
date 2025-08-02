@@ -1,4 +1,4 @@
-# PyOutreg
+# PyOutReg (outreg2)
 
 [![PyPI version](https://badge.fury.io/py/pyoutreg.svg)](https://badge.fury.io/py/pyoutreg)
 [![Python Versions](https://img.shields.io/pypi/pyversions/pyoutreg.svg)](https://pypi.org/project/pyoutreg/)
